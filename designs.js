@@ -51,12 +51,15 @@ formElement.addEventListener("submit" , function(event){
     makeGrid(colorElement, tableElement);
     reset = !reset;
   }else{
-    // Collect all the <td> elements
-    const tableElements = document.body.querySelectorAll('td');
-    for (let element = 0 ; element < tableElements.length ; element++ ){
-      tableElements[element].style.backgroundColor = "#FFFFFF";
+    // Collect all the <tr> elements in our grid
+    const trElements = tableElement.querySelectorAll('tr');
+    console.log(trElements);
+    //Remove the previous grid
+    for (tableChildElement = 0 ; tableChildElement < trElements.length ; tableChildElement++){
+      tableElement.removeChild(trElements[tableChildElement]);
     }
-    colorElement.value = "#FFFFFF";
+    //Build a new grid
+    makeGrid(colorElement, tableElement);
   }
 
 });
